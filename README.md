@@ -18,3 +18,6 @@
 
 ## Хөгжүүлэлтийн арга
 Scrum (Sprint, Daily Scrum, Sprint Review, Retrospective)
+
+
+## 
