@@ -1,0 +1,49 @@
+name: Java CI
+
+# main руу push хийх, feature/* салбар руу push хийх,
+# main руу Pull Request нээх бүрд тестүүд автоматаар ажиллана.
+on:
+  push:
+    branches: [main, "feature/**"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Build & test (mvn test)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Кодыг татах
+        uses: actions/checkout@v4
+
+      - name: JDK 17 суулгах
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      - name: Нэгжийн тестүүдийг ажиллуулах
+        run: mvn -B clean test
+
+      - name: Тестийн үр дүнгийн хураангуй
+        if: always()
+        run: |
+          {
+            echo "## Тестийн үр дүн"
+            echo '```'
+            grep -h "Tests run" target/surefire-reports/*.txt || echo "Тестийн тайлан олдсонгүй"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Тестийн тайланг хадгалах
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
+          if-no-files-found: ignore

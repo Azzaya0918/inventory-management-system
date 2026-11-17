@@ -1,0 +1,14 @@
+# Maven build гаралт
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Үйлдлийн систем
+.DS_Store
+Thumbs.db

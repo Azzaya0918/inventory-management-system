@@ -1,5 +1,7 @@
 # Дэлгүүрийн бараа материал бүртгэх систем
 
+[![Java CI](https://github.com/Azzaya0918/inventory-management-system/actions/workflows/test.yml/badge.svg)](https://github.com/Azzaya0918/inventory-management-system/actions/workflows/test.yml)
+
 Энэ бол Программ хангамж хөгжүүлэлтийн процесс хичээлийн багийн төсөл юм.
 
 ## Багийн гишүүд
